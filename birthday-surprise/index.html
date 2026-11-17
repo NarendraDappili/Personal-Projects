@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffd6e7">
+  <title>Nandu ❤️ Chitti – A Little Surprise</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <!-- Optional fonts: the page falls back to system fonts if they cannot load. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Caveat:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Site header: brand, chapter name, progress and the (optional) music toggle -->
+  <header class="site-header" id="siteHeader">
+    <div class="brand">
+      <span class="brand-name">Nandu ❤️ Chitti</span>
+      <span class="chapter-label" id="chapterLabel" aria-live="polite">Chapter 1 of 7 · Welcome</span>
+    </div>
+    <button id="musicToggle" class="music-toggle" type="button" aria-pressed="false" aria-label="Turn music on">🎵</button>
+    <span class="music-note" id="musicNote">Tap anywhere to start the music 🎵</span>
+    <div class="progress" aria-hidden="true"><i id="progressFill"></i></div>
+  </header>
+
+  <main id="app" class="app">
+
+    <!-- ========== SCREEN 1 : Welcome ========== -->
+    <section class="screen is-active" data-screen="1" data-title="Welcome" data-theme="candy" data-enter="fade" aria-label="Welcome">
+      <div class="floaters" aria-hidden="true"></div>
+      <div class="screen-inner">
+        <span class="sticker pop-in" style="--d:.2s">TOP SECRET 🤫</span>
+        <button class="gift" id="gift" type="button" aria-label="A gift box. Tap it!">
+          <span class="gift-lid"><span class="bow"></span></span>
+          <span class="gift-body"></span>
+          <span class="gift-glow"></span>
+        </button>
+        <div class="gift-steps pop-in" id="giftSteps" style="--d:.5s" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <p class="gift-hint pop-in" id="giftHint" style="--d:.5s" aria-live="polite">psst... try tapping the gift 👆</p>
+        <h1 class="title pop-in" style="--d:.2s">Hey Nandu! ❤️</h1>
+        <p class="subtitle pop-in" style="--d:.5s">Someone has created a little surprise just for you...</p>
+        <p class="curiosity pop-in" style="--d:.8s">Are you ready to discover something special? 👀</p>
+        <button class="continue-btn pop-in" style="--d:1.1s" type="button" data-continue id="startBtn" disabled><span class="btn-label">Unbox the gift first 🔒</span> <span class="arrow">→</span></button>
+      </div>
+    </section>
+
+    <!-- ========== SCREEN 2 : A Special Name  (game: catch the hearts) ========== -->
+    <section class="screen" data-screen="2" data-title="A Special Name" data-theme="sunrise" data-enter="wipe" aria-label="A special name">
+      <div class="floaters" aria-hidden="true"></div>
+      <div class="screen-inner">
+        <p class="soft-line seq" data-seq>Some names are just names...</p>
+        <p class="soft-line seq" data-seq data-gap="900">Some names become special because of the person behind them.</p>
+
+        <div class="game hearts-game seq" data-seq data-game="hearts" data-count="5">
+          <p class="game-hint">Catch the 5 runaway hearts to fill the love meter and unlock her names! 💘</p>
+          <div class="game-field">
+            <svg class="love-meter" viewBox="0 0 100 92" aria-hidden="true">
+              <defs>
+                <clipPath id="heartClip"><path d="M50 86C18 60 4 44 4 27 4 13 15 4 28 4c10 0 18 5 22 13 4-8 12-13 22-13 13 0 24 9 24 23 0 17-14 33-46 59z"/></clipPath>
+                <linearGradient id="loveGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9ec4"/><stop offset="1" stop-color="#e0457f"/></linearGradient>
+              </defs>
+              <g class="meter-body">
+                <path class="heart-back" d="M50 86C18 60 4 44 4 27 4 13 15 4 28 4c10 0 18 5 22 13 4-8 12-13 22-13 13 0 24 9 24 23 0 17-14 33-46 59z"/>
+                <g clip-path="url(#heartClip)"><g class="liquid"><path class="wave" d="M-50 4Q-37.5 -2 -25 4T0 4T25 4T50 4T75 4T100 4T125 4T150 4V130H-50z"/></g></g>
+                <path class="heart-line" d="M50 86C18 60 4 44 4 27 4 13 15 4 28 4c10 0 18 5 22 13 4-8 12-13 22-13 13 0 24 9 24 23 0 17-14 33-46 59z"/>
+                <text class="meter-pct" x="50" y="48">0%</text>
+              </g>
+            </svg>
+            <div class="field-hearts"></div>
+          </div>
+          <p class="field-msg" aria-live="polite" hidden></p>
+          <div class="pips" aria-hidden="true"><span class="pip">💗</span><span class="pip">💗</span><span class="pip">💗</span><span class="pip">💗</span><span class="pip">💗</span></div>
+          <p class="game-score"><span class="score-now">0</span> / 5 caught</p>
+        </div>
+
+        <h2 class="name name-nandu seq" data-seq data-gap="1100">NANDU ❤️</h2>
+        <h2 class="name name-chitti seq" data-seq data-gap="1100">CHITTI 🧸</h2>
+        <div class="bubble seq" data-seq data-gap="700">Two cute names, but one very special person!</div>
+        <p class="warning seq" data-seq data-gap="500">⚠️ Warning: extreme cuteness detected</p>
+        <p class="curiosity seq" data-seq data-gap="300">But wait... There's more to this story! 💫</p>
+        <button class="continue-btn seq" data-seq data-continue type="button">Discover More <span class="arrow">→</span></button>
+      </div>
+    </section>
+
+    <!-- ========== SCREEN 3 : Our Little Friendship Story  (game: answer the calls) ========== -->
+    <section class="screen" data-screen="3" data-title="Our Little Story" data-theme="sky" data-enter="slide" aria-label="Our friendship story">
+      <div class="floaters" aria-hidden="true"></div>
+      <div class="screen-inner">
+        <h2 class="heading">Not Every Beautiful Story Starts With a Meeting...</h2>
+        <div class="chat">
+          <div class="chat-bubble left seq" data-seq data-gap="1500"><span class="chat-ico">💬</span>Sometimes, a beautiful connection begins with just a message.</div>
+          <div class="chat-bubble right seq" data-seq data-gap="1500"><span class="chat-ico">🗨️</span>Then come those endless conversations...</div>
+
+          <div class="gate seq" data-seq data-game="answer" data-icon="📞" data-label="Ring ring! Tap to answer 📞" data-done="Connected! (you were on mute 😂)">
+            <button class="answer-btn" type="button"><span class="gate-icon"></span><span class="gate-label"></span></button>
+          </div>
+          <div class="chat-bubble left seq" data-seq data-gap="1400"><span class="chat-ico">📞</span>Those unexpected calls...</div>
+
+          <div class="gate seq" data-seq data-game="answer" data-icon="📹" data-label="Incoming video call! Tap to accept 📹" data-done="Camera on! (hair check passed ✅)">
+            <button class="answer-btn" type="button"><span class="gate-icon"></span><span class="gate-label"></span></button>
+          </div>
+          <div class="chat-bubble right seq" data-seq data-gap="1500"><span class="chat-ico">📹</span>Those video calls that make distance feel a little smaller...</div>
+          <div class="chat-bubble center seq" data-seq data-gap="1200"><span class="chat-ico">🌟</span>And slowly, someone becomes an important part of your everyday life.</div>
+        </div>
+        <p class="curiosity seq" data-seq data-gap="300">Do you know what made all of this even more special? ❤️</p>
+        <button class="continue-btn seq" data-seq data-continue type="button">There's More to Tell <span class="arrow">→</span></button>
+      </div>
+    </section>
+
+    <!-- ========== SCREEN 4 : Things I Like About You  (game: pop the balloons) ========== -->
+    <section class="screen" data-screen="4" data-title="What I Like About You" data-theme="party" data-enter="flip" aria-label="Things I like about you">
+      <div class="floaters" aria-hidden="true"></div>
+      <div class="screen-inner">
+        <h2 class="heading">Do You Know What I Like About You?</h2>
+        <p class="game-hint seq" data-seq data-gap="300">Tap every balloon to pop it and find out! 🎈</p>
+        <div class="game balloon-game seq" data-seq data-game="balloons">
+          <div class="pop-meter"><div class="pop-fill"></div><span class="pop-text">0 / 6 popped</span></div>
+          <div class="balloon-grid">
+            <div class="cell" role="button" tabindex="0" aria-label="Tap to pop balloon 1"><span class="balloon" aria-hidden="true">?</span><span class="cell-card"><span class="card-ico">💬</span><span class="card-text">The way you talk to me.</span></span></div>
+            <div class="cell" role="button" tabindex="0" aria-label="Tap to pop balloon 2"><span class="balloon" aria-hidden="true">?</span><span class="cell-card"><span class="card-ico">😊</span><span class="card-text">The happiness in our conversations.</span></span></div>
+            <div class="cell" role="button" tabindex="0" aria-label="Tap to pop balloon 3"><span class="balloon" aria-hidden="true">?</span><span class="cell-card"><span class="card-ico">📱</span><span class="card-text">The little moments we share through messages and calls.</span></span></div>
+            <div class="cell" role="button" tabindex="0" aria-label="Tap to pop balloon 4"><span class="balloon" aria-hidden="true">?</span><span class="cell-card"><span class="card-ico">💝</span><span class="card-text">The care you show.</span></span></div>
+            <div class="cell" role="button" tabindex="0" aria-label="Tap to pop balloon 5"><span class="balloon" aria-hidden="true">?</span><span class="cell-card"><span class="card-ico">🌸</span><span class="card-text">The importance you give me.</span></span></div>
+            <div class="cell" role="button" tabindex="0" aria-label="Tap to pop balloon 6"><span class="balloon" aria-hidden="true">?</span><span class="cell-card"><span class="card-ico">✨</span><span class="card-text">The way you make even ordinary conversations feel special.</span></span></div>
+          </div>
+        </div>
+        <p class="hand-note seq" data-seq data-gap="500">It's not just about how often we talk. It's about how special those moments feel.</p>
+        <p class="curiosity seq" data-seq data-gap="300">There's one thing I've been wanting to tell you...</p>
+        <button class="continue-btn seq" data-seq data-continue type="button">Tell Me! 💌 <span class="arrow">→</span></button>
+      </div>
+    </section>
+
+    <!-- ========== SCREEN 5 : Emotional Moment  (game: hold to send a hug) ========== -->
+    <section class="screen" data-screen="5" data-title="A Little Emotional Moment" data-theme="dream" data-enter="fade" aria-label="A little emotional moment">
+      <div class="shooting-star" aria-hidden="true"></div>
+      <div class="floaters" aria-hidden="true"></div>
+      <div class="screen-inner">
+        <h2 class="heading seq" data-seq data-gap="600">Some People Become Special Without Even Realizing It...</h2>
+        <p class="typed seq" data-seq data-type data-gap="700">Even though we haven't met in person yet, the connection we've built through messages, phone calls, and video calls means a lot to me.</p>
+        <p class="typed seq" data-seq data-type data-gap="700">Your care, your attention, and the importance you've given me are memories I genuinely cherish.</p>
+        <p class="typed handwritten seq" data-seq data-type data-gap="800">Sometimes, it's not about how far apart two people are. It's about how close they feel despite the distance.</p>
+
+        <div class="hug-game seq" data-seq data-game="hug" data-focus="none">
+          <p class="read-note" aria-live="polite">Take a moment to read... 💭<span class="read-bar"><i></i></span></p>
+          <button class="hug-teaser" type="button" hidden>👆 Tap here to reveal something special ✨</button>
+          <div class="hug-body" hidden>
+            <button class="hug-heart" type="button" aria-label="Press and hold to send a hug"><span class="hug-emoji">❤️</span></button>
+            <p class="hug-text">Press &amp; hold the heart to send a virtual hug 🤗<br><small>(until I can send a real one)</small></p>
+          </div>
+        </div>
+
+        <p class="curiosity seq" data-seq data-gap="300">One little wish is still waiting to be revealed...</p>
+        <button class="continue-btn seq" data-seq data-continue type="button">What's That Wish? ❤️ <span class="arrow">→</span></button>
+      </div>
+    </section>
+
+    <!-- ========== SCREEN 6 : The Wish  (game: walk towards each other) ========== -->
+    <section class="screen" data-screen="6" data-title="The Wish" data-theme="sunset" data-enter="wipe" aria-label="The wish">
+      <div class="sun" aria-hidden="true"></div>
+      <div class="floaters" aria-hidden="true"></div>
+      <div class="screen-inner">
+        <h2 class="heading seq" data-seq data-gap="700">One Day... Hopefully Very Soon! ❤️</h2>
+        <p class="big-wish seq" data-seq data-gap="900">I really wish to meet you in person.</p>
+        <p class="soft-line seq" data-seq data-gap="1000">Although we've shared so many conversations, messages, and video calls, there's still one beautiful moment waiting for us...</p>
+
+        <div class="walk-game seq" data-seq data-game="walk">
+          <div class="road-scene" style="--p:0">
+            <div class="walk-sky" aria-hidden="true"></div>
+            <div class="road" aria-hidden="true"></div>
+            <img class="walker walker-a" src="assets/images/nandu.svg" alt="Nandu" width="60" height="100">
+            <img class="walker walker-b" src="assets/images/narendra.svg" alt="Narendra" width="60" height="100">
+            <div class="meet-heart" aria-hidden="true">❤️</div>
+          </div>
+          <p class="walk-caption" aria-live="polite">Help us walk towards each other! 👣</p>
+          <button class="step-btn" type="button">Take a step 👣</button>
+        </div>
+
+        <p class="big-wish seq" data-seq data-gap="900">Meeting you in person!</p>
+        <p class="soft-line seq" data-seq data-gap="900">I hope that day comes as soon as possible.</p>
+        <p class="soft-line seq" data-seq data-gap="900">Until then, let's keep creating beautiful memories, one conversation at a time.</p>
+        <p class="curiosity seq" data-seq data-gap="300">And finally... Something special for the birthday girl! 🎂</p>
+        <button class="continue-btn seq" data-seq data-continue type="button">Open Your Final Surprise 🎁 <span class="arrow">→</span></button>
+      </div>
+    </section>
+
+    <!-- ========== SCREEN 7 : Final Birthday Surprise  (game: blow the candles) ========== -->
+    <section class="screen screen-final" data-screen="7" data-title="Happy Birthday" data-theme="final" data-enter="scale" data-final aria-label="Happy Birthday">
+      <img class="bunting" src="assets/images/bunting.svg" alt="" aria-hidden="true">
+      <div class="floaters" aria-hidden="true"></div>
+      <div class="screen-inner">
+        <h2 class="glow-title seq" data-seq data-gap="700">Happy Birthday, Nandu! 🎂❤️</h2>
+        <p class="subtitle seq" data-seq data-gap="700">To My Special Best Friend, Chitti!</p>
+
+        <div class="cake-game seq" data-seq data-game="candles">
+          <button class="cake" type="button" aria-label="Tap the cake to blow out the candles">
+            <img src="assets/images/cake.svg" alt="" width="240" height="200">
+            <span class="candles" aria-hidden="true">
+              <span class="candle"><i class="flame"></i></span>
+              <span class="candle"><i class="flame"></i></span>
+              <span class="candle"><i class="flame"></i></span>
+              <span class="candle"><i class="flame"></i></span>
+              <span class="candle"><i class="flame"></i></span>
+            </span>
+          </button>
+          <p class="cake-hint">Tap the cake to blow out the candles 🌬️</p>
+        </div>
+
+        <article class="letter">
+          <p class="seq" data-seq data-gap="900"><strong>Happy Birthday, Nandu!</strong></p>
+          <p class="seq" data-seq data-gap="1100">I'm really glad that we got connected.</p>
+          <p class="seq" data-seq data-gap="1600">Even though we haven't met in person yet, our conversations, messages, phone calls, and video calls have created memories that I genuinely value.</p>
+          <p class="seq" data-seq data-gap="1400">I love the care you show, the importance you give me, and the little things that make our friendship special.</p>
+          <p class="seq" data-seq data-gap="1400">I genuinely wish to meet you as soon as possible and create memories beyond phone screens.</p>
+          <p class="seq" data-seq data-gap="1400">Until that day comes, keep smiling, keep being yourself, and never lose that beautiful smile.</p>
+          <p class="seq" data-seq data-gap="1100">Thank you for being my best friend.</p>
+          <p class="seq" data-seq data-gap="900">With lots of love and warm wishes,</p>
+          <p class="signature seq" data-seq data-gap="1200">Your Best Friend,<br>Narendra ❤️</p>
+        </article>
+
+        <p class="finale-hand seq" data-seq data-gap="1400">Stay Happy. Stay Crazy. Stay My Chitti! ❤️</p>
+        <p class="finale-end seq" data-seq data-gap="600">Once Again, Happy Birthday, Nandu! 🎉</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
